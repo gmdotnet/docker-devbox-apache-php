@@ -30,6 +30,7 @@ RUN apt-get -y update \
     php-pear \
     postfix \
     wget \
+    unzip \
     && apt-get clean \
     && rm -rf \
     /var/lib/apt/lists/* \

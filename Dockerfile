@@ -43,8 +43,10 @@ RUN apt-get -y update \
 COPY script /opt/script/
 COPY apache2/conf-enabled/* /etc/apache2/conf-enabled/
 COPY apache2/sites-enabled/* /etc/apache2/sites-enabled/
-COPY php/apache2/mods-available/devbox.ini /etc/php/apache2/apache2/conf.d/00-devbox.ini
-COPY php/apache2/mods-available/xdebug.ini /etc/php/apache2/mods-available/xdebug.ini
+COPY php/apache2/mods-available/devbox.ini /etc/php5/apache2/conf.d/00-devbox.ini
+COPY php/apache2/mods-available/xdebug.ini /etc/php5/apache2/conf.d/90-xdebug.ini
+COPY php/apache2/mods-available/devbox.ini /etc/php5/cli/conf.d/00-devbox.ini
+COPY php/apache2/mods-available/xdebug.ini /etc/php5/cli/conf.d/90-xdebug.ini
 
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \

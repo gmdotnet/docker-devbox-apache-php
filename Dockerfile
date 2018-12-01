@@ -29,7 +29,6 @@ RUN apt-get -y update \
     php7.2-dev \
     php7.2-gd \
     php7.2-intl \
-    php7.2-mcrypt \
     php7.2-mysql \
     php7.2-mbstring \
     php7.2-xml \
@@ -53,10 +52,10 @@ RUN apt-get -y update \
 COPY script /opt/script/
 COPY apache2/conf-enabled/* /etc/apache2/conf-enabled/
 COPY apache2/sites-enabled/* /etc/apache2/sites-enabled/
-COPY php/7.1/mods-available/devbox.ini /etc/php/7.1/apache2/conf.d/00-devbox.ini
-COPY php/7.1/mods-available/xdebug.ini /etc/php/7.1/apache2/conf.d/90-xdebug.ini
-COPY php/7.1/mods-available/devbox.ini /etc/php/7.1/cli/conf.d/00-devbox.ini
-COPY php/7.1/mods-available/xdebug.ini /etc/php/7.1/cli/conf.d/90-xdebug.ini
+COPY php/7.2/mods-available/devbox.ini /etc/php/7.2/apache2/conf.d/00-devbox.ini
+COPY php/7.2/mods-available/xdebug.ini /etc/php/7.2/apache2/conf.d/90-xdebug.ini
+COPY php/7.2/mods-available/devbox.ini /etc/php/7.2/cli/conf.d/00-devbox.ini
+COPY php/7.2/mods-available/xdebug.ini /etc/php/7.2/cli/conf.d/90-xdebug.ini
 
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \

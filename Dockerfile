@@ -13,6 +13,7 @@ RUN apt-get -y update \
     && apt-get -y install \
     apache2 \
     git \
+    wget \
     php7.3 \
     php7.3-common \
     php7.3-cli \

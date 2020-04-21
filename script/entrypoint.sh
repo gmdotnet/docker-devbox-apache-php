@@ -18,11 +18,10 @@ service postfix start
 
 ## adding composer
 cd /tmp/
-wget https://getcomposer.org/composer.phar
+## choose a fixed version because we have problems with latest version
+wget https://getcomposer.org/download/1.8.4/composer.phar
 chmod +x ./composer.phar
 mv ./composer.phar /usr/local/bin/composer
-## get the stable version
-/usr/local/bin/composer self-update
 
 #############################################
 # APACHE

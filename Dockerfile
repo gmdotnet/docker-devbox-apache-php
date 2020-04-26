@@ -30,6 +30,9 @@ RUN apt-get -y update \
     php7.3-xdebug \
     php7.3-soap \
     php7.3-bcmath \
+    php7.3-imagick	\
+    php7.3-exif	\
+    php7.3-opcache	\
     postfix \
     unzip \
     && apt-get clean \

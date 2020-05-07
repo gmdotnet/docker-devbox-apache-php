@@ -34,6 +34,7 @@ RUN apt-get -y update \
     php7.3-exif	\
     php7.3-opcache	\
     postfix \
+    rsync \
     unzip \
     && apt-get clean \
     && rm -rf \

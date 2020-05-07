@@ -38,6 +38,7 @@ RUN apt-get -y update \
     php7.2-xdebug \
     php7.2-soap \
     php7.2-bcmath \
+    php7.2-phpdbg \
     postfix \
     unzip \
     && apt-get clean \

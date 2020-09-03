@@ -1,4 +1,5 @@
-FROM debian:buster
+# install on debian 9 for problems with lib dependency like libcurl3 (not installable on debian 10 -> we have libcurl4)
+FROM debian:stretch
 
 MAINTAINER Giuseppe Morelli <info@giuseppemorelli.net>
 
@@ -11,28 +12,36 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y update \
     && apt-get -y install \
+    apt-transport-https \
+    ca-certificates \
+    wget
+
+RUN wget -O "/etc/apt/trusted.gpg.d/php.gpg" "https://packages.sury.org/php/apt.gpg" \
+    && sh -c 'echo "deb https://packages.sury.org/php/ stretch main" > /etc/apt/sources.list.d/php.list'
+
+RUN apt-get update \
+    && apt-get -y install \
     apache2 \
     git \
-    wget \
-    php7.3 \
-    php7.3-common \
-    php7.3-cli \
-    php7.3-curl \
-    php7.3-dev \
-    php7.3-gd \
-    php7.3-intl \
-    php7.3-mysql \
-    php7.3-mbstring \
-    php7.3-xml \
-    php7.3-xsl \
-    php7.3-zip \
-    php7.3-json \
-    php7.3-xdebug \
-    php7.3-soap \
-    php7.3-bcmath \
-    php7.3-imagick	\
-    php7.3-exif	\
-    php7.3-opcache	\
+    php7.4 \
+    php7.4-common \
+    php7.4-cli \
+    php7.4-curl \
+    php7.4-dev \
+    php7.4-gd \
+    php7.4-intl \
+    php7.4-mysql \
+    php7.4-mbstring \
+    php7.4-xml \
+    php7.4-xsl \
+    php7.4-zip \
+    php7.4-json \
+    php7.4-xdebug \
+    php7.4-soap \
+    php7.4-bcmath \
+    php7.4-imagick	\
+    php7.4-exif	\
+    php7.4-opcache	\
     postfix \
     rsync \
     unzip \
@@ -48,10 +57,10 @@ RUN apt-get -y update \
 COPY script /opt/script/
 COPY apache2/conf-enabled/* /etc/apache2/conf-enabled/
 COPY apache2/sites-enabled/* /etc/apache2/sites-enabled/
-COPY php/7.3/mods-available/devbox.ini /etc/php/7.3/apache2/conf.d/00-devbox.ini
-COPY php/7.3/mods-available/xdebug.ini /etc/php/7.3/apache2/conf.d/90-xdebug.ini
-COPY php/7.3/mods-available/devbox.ini /etc/php/7.3/cli/conf.d/00-devbox.ini
-COPY php/7.3/mods-available/xdebug.ini /etc/php/7.3/cli/conf.d/90-xdebug.ini
+COPY php/7.4/mods-available/devbox.ini /etc/php/7.4/apache2/conf.d/00-devbox.ini
+COPY php/7.4/mods-available/xdebug.ini /etc/php/7.4/apache2/conf.d/90-xdebug.ini
+COPY php/7.4/mods-available/devbox.ini /etc/php/7.4/cli/conf.d/00-devbox.ini
+COPY php/7.4/mods-available/xdebug.ini /etc/php/7.4/cli/conf.d/90-xdebug.ini
 
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \

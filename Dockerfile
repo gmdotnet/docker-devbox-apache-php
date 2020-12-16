@@ -49,9 +49,13 @@ COPY script /opt/script/
 COPY apache2/conf-enabled/* /etc/apache2/conf-enabled/
 COPY apache2/sites-enabled/* /etc/apache2/sites-enabled/
 COPY php/7.3/mods-available/devbox.ini /etc/php/7.3/apache2/conf.d/00-devbox.ini
-COPY php/7.3/mods-available/xdebug.ini /etc/php/7.3/apache2/conf.d/90-xdebug.ini
+COPY php/7.3/mods-available/xdebug-3.ini /etc/php/7.3/apache2/conf.d/90-xdebug-3.ini
 COPY php/7.3/mods-available/devbox.ini /etc/php/7.3/cli/conf.d/00-devbox.ini
-COPY php/7.3/mods-available/xdebug.ini /etc/php/7.3/cli/conf.d/90-xdebug.ini
+COPY php/7.3/mods-available/xdebug-3.ini /etc/php/7.3/cli/conf.d/90-xdebug-3.ini
+
+RUN pecl install xdebug \
+    && pecl config-set php_ini  /etc/php/7.3/apache2/php.ini \
+    && pecl config-set php_ini  /etc/php/7.3/cli/php.ini
 
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \

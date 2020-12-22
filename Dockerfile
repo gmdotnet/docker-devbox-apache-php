@@ -42,6 +42,11 @@ RUN apt-get update \
     php7.4-imagick	\
     php7.4-exif	\
     php7.4-opcache	\
+    php7.4-bcmath \
+    php7.4-ctype \
+    php7.4-dom \
+    php7.4-iconv \
+    php7.4-sockets \
     postfix \
     rsync \
     unzip \
@@ -58,9 +63,9 @@ COPY script /opt/script/
 COPY apache2/conf-enabled/* /etc/apache2/conf-enabled/
 COPY apache2/sites-enabled/* /etc/apache2/sites-enabled/
 COPY php/7.4/mods-available/devbox.ini /etc/php/7.4/apache2/conf.d/00-devbox.ini
-COPY php/7.4/mods-available/xdebug.ini /etc/php/7.4/apache2/conf.d/90-xdebug.ini
+COPY php/7.4/mods-available/xdebug-3.ini /etc/php/7.4/apache2/conf.d/90-xdebug-3.ini
 COPY php/7.4/mods-available/devbox.ini /etc/php/7.4/cli/conf.d/00-devbox.ini
-COPY php/7.4/mods-available/xdebug.ini /etc/php/7.4/cli/conf.d/90-xdebug.ini
+COPY php/7.4/mods-available/xdebug-3.ini /etc/php/7.4/cli/conf.d/90-xdebug-3.ini
 
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \

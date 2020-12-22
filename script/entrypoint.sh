@@ -22,7 +22,7 @@ wget https://getcomposer.org/composer.phar
 chmod +x ./composer.phar
 mv ./composer.phar /usr/local/bin/composer
 ## get the stable version
-/usr/local/bin/composer self-update
+/usr/local/bin/composer self-update --1
 
 #############################################
 # APACHE

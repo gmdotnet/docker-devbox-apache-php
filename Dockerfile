@@ -10,6 +10,7 @@ ENV APACHE_USER_GID     33
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -y update \
+    && apt-get dist-upgrade -y \
     && apt-get -y install \
     apache2 \
     git \

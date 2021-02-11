@@ -48,6 +48,13 @@ COPY php/apache2/mods-available/xdebug.ini /etc/php5/apache2/conf.d/90-xdebug.in
 COPY php/apache2/mods-available/devbox.ini /etc/php5/cli/conf.d/00-devbox.ini
 COPY php/apache2/mods-available/xdebug.ini /etc/php5/cli/conf.d/90-xdebug.ini
 
+## adding composer
+RUN cd /tmp/ \
+    && wget https://getcomposer.org/composer.phar \
+    && chmod +x ./composer.phar \
+    && mv ./composer.phar /usr/local/bin/composer \
+    && composer selfupdate --1
+
 RUN a2enmod rewrite \
     && a2enmod vhost_alias \
     && a2enmod ssl

@@ -54,12 +54,7 @@ COPY php/7.3/mods-available/xdebug-3.ini /etc/php/7.3/apache2/conf.d/90-xdebug-3
 COPY php/7.3/mods-available/devbox.ini /etc/php/7.3/cli/conf.d/00-devbox.ini
 COPY php/7.3/mods-available/xdebug-3.ini /etc/php/7.3/cli/conf.d/90-xdebug-3.ini
 
-#############################################
-# COMPOSER
-# (not correct to be here, just a quick install)
-#############################################
-
-## adding composer
+## adding composer 2
 RUN cd /tmp/ \
     && wget https://getcomposer.org/composer.phar \
     && chmod +x ./composer.phar \

@@ -12,19 +12,6 @@ for e in ${!POSTFIX_*} ; do postconf -e "${e:8}=${!e}" ; done
 service postfix start
 
 #############################################
-# COMPOSER
-# (not correct to be here, just a quick install)
-#############################################
-
-## adding composer
-cd /tmp/
-wget https://getcomposer.org/composer.phar
-chmod +x ./composer.phar
-mv ./composer.phar /usr/local/bin/composer
-## get the stable version
-/usr/local/bin/composer self-update --1
-
-#############################################
 # APACHE
 #############################################
 
